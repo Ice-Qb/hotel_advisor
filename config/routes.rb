@@ -1,4 +1,6 @@
 HotelAdvisor::Application.routes.draw do
+  root :to => 'hotels#top'
+  resources :hotels
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
