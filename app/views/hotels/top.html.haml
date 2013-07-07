@@ -2,5 +2,6 @@
 .center.hero-unit
   %h1 Hotels Top 5
   %h2
-    This is the home page
   = link_to "Sign up now!", '#', class: "btn btn-large btn-primary"
+%ol
+  = render @hotels

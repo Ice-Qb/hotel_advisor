@@ -142,11 +142,6 @@ aside {
   }
 }
 
-.gravatar {
-  float: left;
-  margin-right: 10px;
-}
-
 .stats {
   overflow: auto;
   a {
@@ -168,13 +163,6 @@ aside {
   }
 }
 
-.user_avatars {
-  overflow: auto;
-  margin-top: 10px;
-  .gravatar {
-    margin: 1px 1px;
-  }
-}
 
 /* forms */
 
@@ -220,7 +208,7 @@ input {
 
 /* classifieds */
 
-.classifieds {
+.hotels {
   list-style: none;
   margin: 10px 0 0 0;
 
@@ -235,10 +223,7 @@ input {
 .timestamp {
   color: $grayLight;
 }
-.gravatar {
-  float: left;
-  margin-right: 10px;
-}
+
 aside {
   textarea {
     height: 100px;
@@ -250,4 +235,22 @@ aside {
 }
 .c {
   text-align: center;
+}
+
+span.status { 
+  display: block; 
+  width: 10px; 
+  height: 10px;
+  //margin: 0.25em auto;
+  padding: 0;
+  border: 1px solid #000000;
+}
+
+span.status.true { 
+  background: green;
+  color: green;
+}
+span.status.true { 
+  background: red;
+  color: red;
 }

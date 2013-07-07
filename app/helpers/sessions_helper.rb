@@ -45,4 +45,17 @@ module SessionsHelper
   def admin_user
     redirect_to(root_path) unless current_user.admin?
   end
+  
+  def status_tag(boolean, options={})
+    options[:true]        ||= ''
+    options[:true_class]  ||= 'status true'
+    options[:false]       ||= ''
+    options[:false_class] ||= 'status false'
+
+    if boolean
+      content_tag(:span, options[:true], :class => options[:true_class])
+    else
+      content_tag(:span, options[:false], :class => options[:false_class])
+    end
+  end
 end

@@ -4,8 +4,8 @@
       = link_to "hotel advisor", root_path, id: "logo"
       %nav
         %ul.nav.pull-right
-          %li= link_to "New hotel", '#'
-          %li= link_to "All hotels", '#'
+          %li= link_to "New hotel", new_hotel_path
+          %li= link_to "All hotels", hotels_path
           - if signed_in?            
             - if current_user.admin?
               %li= link_to "Users", users_path

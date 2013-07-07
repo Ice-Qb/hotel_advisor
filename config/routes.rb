@@ -5,10 +5,13 @@ HotelAdvisor::Application.routes.draw do
   resources :users
   resources :hotels
   resources :sessions, only: [:new, :create, :destroy]
+  resources :ratings, only: [:create, :destroy]
+  resources :addresses, only: [:new, :create, :edit, :update, :destroy]
 
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
+  match '/about',  to: 'hotels#about'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

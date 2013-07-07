@@ -17,6 +17,7 @@ describe User do
   it { should respond_to(:authenticate) }
   it { should respond_to(:remember_token) }
   it { should respond_to(:admin) }
+  it { should respond_to(:hotels) }
 
   it { should be_valid }
   it { should_not be_admin }
@@ -125,5 +126,29 @@ describe User do
   describe "remember token" do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
+  end
+
+  describe "hotel associations" do
+
+    before { @user.save }
+    let!(:older_hotel) do
+      FactoryGirl.create(:hotel, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_hotel) do
+      FactoryGirl.create(:hotel, user: @user, created_at: 1.hour.ago)
+    end
+
+    # it "should have the right hotels in the right order" do
+    #   @user.hotels.should == [newer_hotel, older_hotel]
+    # end
+
+    it "should destroy associated microposts" do
+      hotels = @user.hotels.dup
+      @user.destroy
+      hotels.should_not be_empty
+      hotels.each do |hotel|
+        Hotel.find_by_id(hotel.id).should be_nil
+      end
+    end
   end
 end

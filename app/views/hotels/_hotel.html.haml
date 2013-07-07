@@ -1,0 +1,46 @@
+%li
+  %span= link_to hotel.title, hotel
+  - if signed_in?
+    - if current_user.admin?
+      | #{link_to "delete", hotel, method: :delete, data: { confirm: "You sure?" }}  
+      /| #{link_to "edit", edit_hotel_path(hotel.id) }      
+  %br
+  %span.content
+    = hotel.description
+  %span
+    = succeed " " do 
+      %span.other_content star rating:   
+    =hotel.star_rating
+  %br   
+  %span
+    = succeed " " do 
+      %span.other_content breakfast included?   
+    =status_tag(hotel.breakfast?)
+  %span
+    = succeed " " do 
+      %span.other_content price:  
+    =number_to_currency(hotel.price)
+  %br
+  %span
+    = succeed " " do 
+      %span.other_content country:  
+    =hotel.address.nation
+  %br
+  %span
+    = succeed " " do 
+      %span.other_content state:  
+    =hotel.address.state
+  %br
+  %span
+    = succeed " " do 
+      %span.other_content city:  
+    =hotel.address.city
+  %br
+  %span
+    = succeed " " do 
+      %span.other_content street:  
+    =hotel.address.street
+  %br
+  %span.timestamp
+    Created #{time_ago_in_words(hotel.created_at)} ago.
+  

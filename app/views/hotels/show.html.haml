@@ -1,1 +1,49 @@
-%h1 Hotels Show
+- provide(:title, @hotel.title)
+.row
+  .span8
+    %h3.c= @hotel.title
+    = image_tag @hotel.image_url.to_s
+    %p.other_content description:
+    %p.content= @hotel.description
+    %p
+      = succeed " " do 
+        %span.other_content star rating:  
+      =@hotel.star_rating
+    %p
+      = succeed " " do 
+        %span.other_content breakfast included?  
+      =status_tag(@hotel.breakfast?)
+    %p 
+      = succeed " " do 
+        %span.other_content price:  
+      =number_to_currency(@hotel.price)  
+    %h4 Address
+    %li
+      = succeed " " do 
+        %span.other_content country:  
+      =@hotel.address.nation
+    %li 
+      = succeed " " do 
+        %span.other_content state:  
+      =@hotel.address.state
+    %li 
+      = succeed " " do 
+        %span.other_content city:  
+      =@hotel.address.city
+    %li
+      = succeed " " do 
+        %span.other_content street:  
+      =@hotel.address.street
+    %br          
+    %span.timestamp
+      Created #{time_ago_in_words(@hotel.created_at)} ago.
+    %br
+    %br  
+    -if signed_in?
+      = render 'shared/rating_form'
+    -else
+      %p You should #{link_to 'sign in', signin_path} or #{link_to 'register', signup_path} to add comment.
+    %h4 All Comments  
+    /= will_paginate @ratings
+    = render @ratings
+    /= will_paginate @ratings      

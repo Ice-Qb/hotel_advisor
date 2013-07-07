@@ -1,0 +1,15 @@
+%li  
+  %span
+    = succeed " " do 
+      %span.other_content star rating:   
+    =rating.value
+  %br
+  %span
+    = succeed " " do 
+      %span.other_content comment:  
+    =rating.comment
+  %br
+  %br
+  / %span.timestamp
+  /   Created #{time_ago_in_words(rating.created_at)} ago.
+  

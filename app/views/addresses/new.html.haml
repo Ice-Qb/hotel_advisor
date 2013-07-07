@@ -1,0 +1,10 @@
+- provide(:title, 'Add address to hotel')
+%h1 Add address to hotel
+.row
+  .span6.offset3
+    = simple_form_for(@address, :html => {:class => 'form-vertical' }) do |f|      
+      = f.input :nation, label: "Country"
+      = f.input :state
+      = f.input :city
+      = f.input :street
+      = f.button :submit, 'Create', class: "btn btn-large btn-primary"

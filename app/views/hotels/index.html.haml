@@ -1,2 +1,9 @@
 - provide(:title, 'All Hotels')
-%h1 All Hotels
+.row
+  %aside.span4
+    %section
+      = link_to "New Hotel", new_hotel_path, class: "btn btn-large btn-primary"       
+  .span8
+    %ul.hotels
+      = render @hotels
+      = will_paginate @hotels

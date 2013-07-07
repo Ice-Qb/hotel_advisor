@@ -1,0 +1,4 @@
+= simple_form_for @rating do |f| 
+  = f.input  :value, label: "Rate with",:collection => 1..5, :as => :radio
+  = f.input  :comment
+  = f.button :submit, 'Add', class: "btn btn-large btn-primary" 

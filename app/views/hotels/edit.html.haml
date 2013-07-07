@@ -1,1 +1,11 @@
-%h1 Hotels Edit
+- provide(:title, 'Edit Hotel')
+%h1 Update Hotel
+.row
+  .span6.offset3
+    = simple_form_for(@hotel, :html => {:class => 'form-vertical' }) do |f|      
+      = f.input :title
+      = f.input :breakfast, label: 'Breakfast included?'
+      = f.input :description
+      = f.input :price
+      = f.input :image
+      = f.button :submit, 'Update', class: "btn btn-large btn-primary"
